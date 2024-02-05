@@ -1,16 +1,21 @@
-import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom';
+
 import Header from "./components/Header"
 import Navigation from './components/Navigation'
-import ArticleManager from './pages/ArticleManager'
+import ArticleList from './pages/ArticleList';
+import ViewArticle from './pages/ViewArticle';
+import "./App.css";
 
 function App() {
   return (
     <>
-      <h1>NC News</h1>
       <Header/>
-      <Navigation />
+      <Navigation />      
       <main>
-        <ArticleManager/>
+        <Routes>
+          <Route path="/" element={<ArticleList/>} />
+          <Route path="/:article_id" element={<ViewArticle/>} />
+        </Routes>
       </main>
     </>
   )

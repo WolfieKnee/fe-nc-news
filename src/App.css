@@ -1,0 +1,54 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	max-width: 1000px;
+	margin: auto;
+	font-family: "Lucida Console", monospace;
+	background: rgb(180, 199, 215);
+}
+
+header {
+	border-bottom: solid black 2px;
+	padding: 1em 50px;
+}
+
+.navigation {
+	list-style: none;
+	display: flex;
+	gap: 10px;
+}
+.navigation,
+li {
+	margin: 10px;
+}
+
+.navigation :hover {
+	background: red;
+}
+
+.article-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	justify-content: center;
+	padding: 0px;
+}
+
+.article-list a {
+	text-decoration: none;
+}
+.article-card__img {
+	width: 100%;
+}
+
+.article-card__li {
+	border: 1px black solid;
+	list-style: none;
+	display: block;
+	width: 300px;
+	overflow: auto;
+	text-decoration: none;
+}

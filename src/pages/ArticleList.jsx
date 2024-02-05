@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import newsAPIGet from "../utils/utils"
-import ArticleCard from "./ArticleCard"
-import "./ArticleList.css"
+import ArticleCard from "../components/ArticleCard"
 
 export default function ArticleList(){
     const [articlesList, setArticlesList] = useState([])
@@ -33,7 +32,7 @@ export default function ArticleList(){
     }
 
     return(
-        <div name="articleList">
+        <div name="article List">
             <ul className="article-list">
                 {articlesList.map((article)=>{
                     return <ArticleCard key={article.article_id} article={article}/>

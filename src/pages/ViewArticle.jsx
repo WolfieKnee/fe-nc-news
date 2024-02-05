@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import newsAPIGet from "../utils/utils";
 import { useParams } from 'react-router-dom';
+import CommentList from "../components/CommentList";
 
 
 
@@ -41,10 +42,15 @@ import { useParams } from 'react-router-dom';
          <h1>{articleData.title}</h1>
          <h2>by: {articleData.author}</h2>
          <p>{dateStr} Topic: {articleData.topic}</p>
-         <img src={articleData.article_img_url } alt={`image for ${articleData.title}`}/>
+         <img src={articleData.article_img_url } alt={`image for ${articleData.title} about ${articleData.topic}`}/>
          <p>{articleData.body}</p>
          <p>votes: {articleData.votes}, comments: {articleData.comment_count}</p>
+
+         <div name="comments">
+            <CommentList/>
+         </div>
       </section>
+      
 
    )
 }

@@ -1,0 +1,16 @@
+.article-card__img {
+	max-width: 100%;
+}
+
+.article-card__li {
+	border: 1px black solid;
+	list-style: none;
+	display: block;
+	width: 300px;
+	overflow: auto;
+}
+
+.article-card__li > * {
+	margin: 0;
+	padding: 0;
+}

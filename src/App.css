@@ -13,16 +13,12 @@ body {
 
 header {
 	border-bottom: solid black 2px;
-	padding: 1em 50px;
 }
 
 .navigation {
 	list-style: none;
 	display: flex;
 	gap: 10px;
-}
-.navigation,
-li {
 }
 
 .navigation :hover {

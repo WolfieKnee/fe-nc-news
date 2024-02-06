@@ -14,3 +14,8 @@ export function newsAPIPatch(url, body) {
 export function newsAPIPost(url, body) {
 	return NCNewsAPI.post(url, body);
 }
+
+export function newsAPIDelete(url) {
+	console.log(url, "<< in util");
+	// return NCNewsAPI.post(url);
+}

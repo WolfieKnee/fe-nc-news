@@ -7,6 +7,7 @@ import ArticleList from './pages/ArticleList';
 import ViewArticle from './pages/ViewArticle';
 import UserContext from "./contexts/UserContext";
 import "./App.css";
+import TopicsList from './pages/TopicsList';
 
 function App() {
   // note: hard coded user
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ArticleList/>} />
           <Route path="/:article_id" element={<ViewArticle/>} />
+          <Route path="/topics" element={<TopicsList/>} />
         </Routes>
       </main>
     </UserContext.Provider>

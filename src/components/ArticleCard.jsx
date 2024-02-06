@@ -4,11 +4,6 @@ export default function ArticleCard ({article}){
     const articleDate = new Date(article.created_at);
     const dateStr = articleDate.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'});
 
-    function viewArticle(event, article_id){
-        event.preventDefault();
-        setArticleId(article_id)
-    }
-
     return (
         <li className="article-card__li">
             <Link to={`/${article.article_id}`}>

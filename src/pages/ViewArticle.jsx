@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import newsAPIGet from "../utils/utils";
 import { useParams } from 'react-router-dom';
 import CommentList from "../components/CommentList";
+import ArticleVote from "../components/ArticleVote";
 
 
 
@@ -9,7 +10,6 @@ import CommentList from "../components/CommentList";
    const [articleData, setArticleData] = useState({})
    const [isLoading, setIsLoading] = useState(false);
    const [errorState, setErrorState] = useState(null);
-
    const {article_id} = useParams()
 
    useEffect(()=>{
@@ -36,7 +36,7 @@ import CommentList from "../components/CommentList";
 
    const articleDate = new Date(articleData.created_at);
    const dateStr = articleDate.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'});
-
+   
    return(
       <section name="article" className="article__section">
             <h1>{articleData.title}</h1>
@@ -44,12 +44,15 @@ import CommentList from "../components/CommentList";
             <p>{dateStr} Topic: {articleData.topic}</p>
          <div name="articleContent" className="article__content">
             <img src={articleData.article_img_url } alt={`image for ${articleData.title} about ${articleData.topic}`}/>
+            <div>
             <p>{articleData.body}</p>
+         {articleData.votes!== undefined && <ArticleVote articleVotes = {articleData.votes}/>}
          </div>
-            <p>votes: {articleData.votes}, comments: {articleData.comment_count}</p>
+         </div>
+
 {/* TODO: advanced styling - add a show-hide for this list */}
          <div name="comments">
-            <CommentList/>
+            <CommentList comment_count={articleData.comment_count}/>
          </div>
       </section>
       

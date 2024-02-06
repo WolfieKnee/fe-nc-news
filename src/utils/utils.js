@@ -6,3 +6,7 @@ const NCNewsAPI = axios.create({
 export default function newsAPIGet(url) {
 	return NCNewsAPI.get(url);
 }
+
+export function newsAPIPatch(url, body) {
+	return NCNewsAPI.patch(url, body);
+}

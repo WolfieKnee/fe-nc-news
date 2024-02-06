@@ -3,7 +3,7 @@ import newsAPIGet from "../utils/utils";
 import CommentCard from "./CommentCard";
 import { useParams } from "react-router-dom";
 
-export default function CommentList(){
+export default function CommentList({comment_count}){
     const [commentsList, setCommentsList] = useState([])
     const [isLoading, setIsLoading] = useState(false);
     const [errorState, setErrorState] = useState(null);
@@ -34,7 +34,7 @@ export default function CommentList(){
     }
     return(
         <>
-        <h2>Comments</h2>
+        <h2>{comment_count} Comments</h2>
         <ol className="comments-list__ol">
             {commentsList.map((comment)=>{
                 return <CommentCard key={comment.comment_id} comment={comment}/>

@@ -8,12 +8,13 @@ export default function ArticleCard ({article}){
         <li className="article-card__li">
             <Link to={`/${article.article_id}`}>
             <h1>{article.title}</h1>
+            <p>by: {article.author}</p>
             <img className="article-card__img" src={article.article_img_url } alt={`image for this article ${article.title} which is about ${article.topic}`}/>
         </Link>
-            <p>by: {article.author}</p>
             <p>on: {dateStr}</p>
             <p>votes: {article.votes}</p>
             <p>topic: {article.topic}</p>
+            <p>comments: {article.comment_count}</p>
         </li>
 
     )

@@ -10,3 +10,7 @@ export default function newsAPIGet(url) {
 export function newsAPIPatch(url, body) {
 	return NCNewsAPI.patch(url, body);
 }
+
+export function newsAPIPost(url, body) {
+	return NCNewsAPI.post(url, body);
+}

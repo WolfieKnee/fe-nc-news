@@ -5,7 +5,7 @@ import { newsAPIPatch } from "../utils/utils";
 export default function ArticleVote({articleVotes}){
     const [votes, setVotes] = useState(articleVotes)
     const [incrementVote, setIncrementVote] = useState(0)
-    
+    const [hasVoted, setHasVoted] = useState(null)
     const [isLoading, setIsLoading] = useState(false);
     const [errorState, setErrorState] = useState(null);
     const {article_id} = useParams()
@@ -20,6 +20,7 @@ export default function ArticleVote({articleVotes}){
         .catch(()=>{
             setIsLoading(false)
             setErrorState(true)
+            setHasVoted(null)
         })
 
     },[incrementVote])
@@ -34,13 +35,14 @@ export default function ArticleVote({articleVotes}){
         e.preventDefault();
         setVotes(votes+newVote)
         setIncrementVote(newVote)
+        setHasVoted(true)
     }
     
     return (
-        <>
-            <button className="article__content-button"onClick={(e)=>handleVote(e,-1)}>-</button>
-            votes: {votes}
-            <button className="article__content-button"onClick={(e)=>handleVote(e, 1)}>+</button>
-        </>
+        <p>
+            votes:{!hasVoted ? <button className="article__content-button"onClick={(e)=>handleVote(e,-1)}>-</button>:null}
+            {votes}
+            {!hasVoted ? <button className="article__content-button"onClick={(e)=>handleVote(e, 1)}>+</button>: " thanks for your vote"}
+        </p>
     )
 }

@@ -1,3 +1,4 @@
+/* core site styling */
 * {
 	margin: 0;
 	padding: 0;
@@ -22,13 +23,13 @@ header {
 }
 .navigation,
 li {
-	margin: 10px;
 }
 
 .navigation :hover {
 	background: red;
 }
 
+/* article list */
 .article-list {
 	display: flex;
 	flex-wrap: wrap;
@@ -53,9 +54,7 @@ li {
 	text-decoration: none;
 }
 
-.article__section {
-	margin: 10px;
-}
+/* article */
 
 .article__content {
 	display: flex;
@@ -68,11 +67,16 @@ li {
 	min-width: 300px;
 }
 
-.article__content > p {
+.article__content > * {
 	max-width: 50%;
 	min-width: 300px;
-	margin: 1em;
 }
+
+.article__content-button {
+	padding: 5px;
+}
+
+/* comments section */
 .comments-list__ol {
 	display: flex;
 	flex-wrap: wrap;
@@ -86,7 +90,6 @@ li {
 	background: goldenrod;
 	min-width: 300px;
 	max-width: 40%;
-	margin: 5px;
 	padding: 5px;
 	border-radius: 10px;
 }

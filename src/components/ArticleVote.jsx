@@ -38,8 +38,8 @@ export default function ArticleVote({articleVotes}){
     
     return (
         <>
-            <button className="article__content-button"onClick={(e)=>handleVote(e,-1)}>-</button>
-            votes: {votes}
+            votes:<button className="article__content-button"onClick={(e)=>handleVote(e,-1)}>-</button>
+            {votes}
             <button className="article__content-button"onClick={(e)=>handleVote(e, 1)}>+</button>
         </>
     )

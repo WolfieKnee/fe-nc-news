@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import newsAPIGet from "../utils/utils";
 import CommentCard from "./CommentCard";
-import { useParams } from "react-router-dom";
+import CommentForm from "../components/CommentForm";
 
-export default function CommentList({comment_count}){
+
+export default function CommentList(){
     const [commentsList, setCommentsList] = useState([])
     const [isLoading, setIsLoading] = useState(false);
     const [errorState, setErrorState] = useState(null);
+    const [commentCount, setCommentCount] = useState(0)
     const {article_id} = useParams()
 
     useEffect(()=>{
@@ -17,6 +20,7 @@ export default function CommentList({comment_count}){
             const {comments} = data;
             setIsLoading(false)
             setCommentsList(comments)
+            setCommentCount(comments.length)
         })
         .catch(()=>{
             setIsLoading(false)
@@ -33,14 +37,14 @@ export default function CommentList({comment_count}){
     return <p>something went wrong getting the comments</p>;
     }
     return(
-        <>
-        <h2>{comment_count} Comments</h2>
-        <ol className="comments-list__ol">
-            {commentsList.map((comment)=>{
-                return <CommentCard key={comment.comment_id} comment={comment}/>
-            })
-            }
-        </ol>        
-        </>
+        <div name="comments">
+            <h2>{commentCount} Comments</h2>
+            <CommentForm commentsList={commentsList} setCommentsList={setCommentsList} commentCount={commentCount} setCommentCount={setCommentCount}/>
+            <ol className="comments-list__ol">
+                {commentsList.map((comment)=>{
+                    return <CommentCard key={comment.comment_id} comment={comment}/>
+                })}
+            </ol>        
+        </div>
         )
 }

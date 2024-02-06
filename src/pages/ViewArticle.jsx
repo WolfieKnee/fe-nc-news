@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import newsAPIGet from "../utils/utils";
 import { useParams } from 'react-router-dom';
+import newsAPIGet from "../utils/utils";
 import CommentList from "../components/CommentList";
 import ArticleVote from "../components/ArticleVote";
 
-
-
- export default function ViewArticle(){
+export default function ViewArticle(){
    const [articleData, setArticleData] = useState({})
    const [isLoading, setIsLoading] = useState(false);
    const [errorState, setErrorState] = useState(null);
@@ -49,11 +47,8 @@ import ArticleVote from "../components/ArticleVote";
          {articleData.votes!== undefined && <ArticleVote articleVotes = {articleData.votes}/>}
          </div>
          </div>
-
 {/* TODO: advanced styling - add a show-hide for this list */}
-         <div name="comments">
-            <CommentList comment_count={articleData.comment_count}/>
-         </div>
+         <CommentList/>
       </section>
       
 

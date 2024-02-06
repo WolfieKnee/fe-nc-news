@@ -3,9 +3,7 @@ import { newsAPIPost } from "../utils/utils"
 import { useParams } from "react-router-dom"
 import UserContext from "../contexts/UserContext";
 
-
-
-export default function CommentForm({commentsList, setCommentsList, commentCount, setCommentCount}){
+export default function CommentForm({commentsList, setCommentsList}){
     const [input,setInput] = useState("")
     const [newComment, setNewComment] = useState("")
     const [errorState, setErrorState] = useState(null);
@@ -18,11 +16,9 @@ export default function CommentForm({commentsList, setCommentsList, commentCount
             newsAPIPost(`/articles/${article_id}/comments`,{username: loggedInUser, body: newComment})
             .catch((err)=>{
                 setErrorState((err))
-                const tempCommentCount=commentCount-1;          
                 const correctCommentList = [...commentsList]
                 correctCommentList.shift()
                 setCommentsList(correctCommentList)
-                setCommentCount(tempCommentCount)
                 setHasCommented(null)
             })
         }
@@ -39,8 +35,6 @@ export default function CommentForm({commentsList, setCommentsList, commentCount
             setErrorState("empty")
         }else if(!hasCommented){
             setNewComment(input)
-            const tempCommentCount=commentCount+1;
-            setCommentCount(tempCommentCount)
             setCommentsList([{article_id: article_id,
                 author:loggedInUser,
                 body:input,

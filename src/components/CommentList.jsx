@@ -4,12 +4,10 @@ import newsAPIGet from "../utils/utils";
 import CommentCard from "./CommentCard";
 import CommentForm from "../components/CommentForm";
 
-
 export default function CommentList(){
     const [commentsList, setCommentsList] = useState([])
     const [isLoading, setIsLoading] = useState(false);
     const [errorState, setErrorState] = useState(null);
-    const [commentCount, setCommentCount] = useState(0)
     const {article_id} = useParams()
 
     useEffect(()=>{
@@ -20,7 +18,6 @@ export default function CommentList(){
             const {comments} = data;
             setIsLoading(false)
             setCommentsList(comments)
-            setCommentCount(comments.length)
         })
         .catch(()=>{
             setIsLoading(false)
@@ -38,11 +35,11 @@ export default function CommentList(){
     }
     return(
         <div name="comments">
-            <h2>{commentCount} Comments</h2>
-            <CommentForm commentsList={commentsList} setCommentsList={setCommentsList} commentCount={commentCount} setCommentCount={setCommentCount}/>
+            <h2>{commentsList.length} Comments</h2>
+            <CommentForm commentsList={commentsList} setCommentsList={setCommentsList}/>
             <ol className="comments-list__ol">
                 {commentsList.map((comment)=>{
-                    return <CommentCard key={comment.comment_id} comment={comment}/>
+                    return <CommentCard key={comment.comment_id} comment={comment} commentsList={commentsList} setCommentsList={setCommentsList}/>
                 })}
             </ol>        
         </div>

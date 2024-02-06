@@ -30,13 +30,24 @@ header {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 15px;
-	justify-content: center;
 	padding: 0px;
 }
 
 .article-list a {
 	text-decoration: none;
 }
+.article-list a:link {
+	color: inherit;
+}
+
+.article-list a:visited {
+	color: inherit;
+}
+
+.article-list a:hover {
+	text-decoration: underline;
+}
+
 .article-card__img {
 	width: 100%;
 }

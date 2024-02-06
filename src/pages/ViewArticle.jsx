@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import newsAPIGet from "../utils/utils";
 import { useParams } from 'react-router-dom';
+import CommentList from "../components/CommentList";
 
 
 
@@ -37,14 +38,21 @@ import { useParams } from 'react-router-dom';
    const dateStr = articleDate.toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'});
 
    return(
-      <section name="article">
-         <h1>{articleData.title}</h1>
-         <h2>by: {articleData.author}</h2>
-         <p>{dateStr} Topic: {articleData.topic}</p>
-         <img src={articleData.article_img_url } alt={`image for ${articleData.title}`}/>
-         <p>{articleData.body}</p>
-         <p>votes: {articleData.votes}, comments: {articleData.comment_count}</p>
+      <section name="article" className="article__section">
+            <h1>{articleData.title}</h1>
+            <h2>by: {articleData.author}</h2>
+            <p>{dateStr} Topic: {articleData.topic}</p>
+         <div name="articleContent" className="article__content">
+            <img src={articleData.article_img_url } alt={`image for ${articleData.title} about ${articleData.topic}`}/>
+            <p>{articleData.body}</p>
+         </div>
+            <p>votes: {articleData.votes}, comments: {articleData.comment_count}</p>
+{/* TODO: advanced styling - add a show-hide for this list */}
+         <div name="comments">
+            <CommentList/>
+         </div>
       </section>
+      
 
    )
 }

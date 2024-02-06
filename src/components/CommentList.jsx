@@ -34,8 +34,8 @@ export default function CommentList(){
     }
     return(
         <>
-        <h3>Comments</h3>
-        <ol className="comments-list">
+        <h2>Comments</h2>
+        <ol className="comments-list__ol">
             {commentsList.map((comment)=>{
                 return <CommentCard key={comment.comment_id} comment={comment}/>
             })

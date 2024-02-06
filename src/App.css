@@ -52,3 +52,41 @@ li {
 	overflow: auto;
 	text-decoration: none;
 }
+
+.article__section {
+	margin: 10px;
+}
+
+.article__content {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.article__content > img {
+	max-width: 40%;
+	height: fit-content;
+	min-width: 300px;
+}
+
+.article__content > p {
+	max-width: 50%;
+	min-width: 300px;
+	margin: 1em;
+}
+.comments-list__ol {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	padding: 0px;
+}
+
+.comment-card__li {
+	list-style-position: inside;
+	border: 1px black solid;
+	background: goldenrod;
+	min-width: 300px;
+	max-width: 40%;
+	margin: 5px;
+	padding: 5px;
+	border-radius: 10px;
+}

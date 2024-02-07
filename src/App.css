@@ -92,7 +92,7 @@ header {
 }
 
 .comment-card__li {
-	list-style-position: inside;
+	list-style-type: none;
 	border: 1px black solid;
 	background: goldenrod;
 	min-width: 300px;

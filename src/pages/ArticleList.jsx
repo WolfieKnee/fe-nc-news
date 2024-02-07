@@ -11,20 +11,17 @@ export default function ArticleList() {
 	const { topicSlug } = useParams();
 
 	useEffect(() => {
+		let url = "/articles";
+		if (topicSlug) {
+			console.log(topicSlug);
+			url += `/?topic=${topicSlug}`;
+		}
 		setIsLoading(true);
-
-		newsAPIGet("/articles")
+		newsAPIGet(url)
 			.then(({ data }) => {
 				const { articles } = data;
 				setIsLoading(false);
-				if (topicSlug) {
-					const topicArticles = articles.filter((article) => {
-						return article.topic === topicSlug;
-					});
-					setArticlesList(topicArticles);
-				} else {
-					setArticlesList(articles);
-				}
+				setArticlesList(articles);
 			})
 			.catch(() => {
 				setIsLoading(false);

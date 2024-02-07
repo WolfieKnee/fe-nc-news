@@ -1,37 +1,44 @@
-// "DELETE /api/comments/:comment_id": {
-//     "description": "Deletes the given comment_id, server no response",
-//     "queries": []
-//     },
+import { useEffect, useState } from "react";
+import { newsAPIDelete } from "../utils/utils";
 
-import { useEffect, useState } from "react"
-import { newsAPIDelete } from "../utils/utils"
+export default function DeleteComment({
+	comment_id,
+	commentsList,
+	setCommentsList,
+}) {
+	const [deleteRequest, setDeleteRequest] = useState(false);
+	const [errorState, setErrorState] = useState(null);
 
-export default function DeleteComment({comment_id, commentsList, setCommentsList}){
-    
-    const [deleteRequest,setDeleteRequest] = useState(false)
-    
-    useEffect(()=>{
-        console.log("in useEffect")
-        if (deleteRequest){
-            console.log("delete found")
+	useEffect(() => {
+		console.log("in useEffect");
+		if (deleteRequest) {
+			console.log("delete found in useEffect");
+			newsAPIDelete(`/comments/${comment_id}`)
+				.then((res) => {
+					setDeleteRequest(false);
+					console.log(deleteRequest, "<< deleteRequest in .then");
+				})
+				.catch((err) => {
+					console.log(err, "in catch");
+					setErrorState(true);
+				});
+		}
+	}, [deleteRequest]);
 
-            newsAPIDelete(`/comments/${comment_id}`)
-            .then((res)=>{
-                setDeleteRequest(false)
-            })
-        }
-    },[deleteRequest])
+	const handleClick = (e) => {
+		e.preventDefault();
+		setDeleteRequest(true);
+		console.log(comment_id, "<< click in onClick", deleteRequest);
+		const tempCommentList = [...commentsList];
+		tempCommentList.shift();
+		setCommentsList(tempCommentList);
+	};
 
-    const handleClick = (e)=>{
-        e.preventDefault()
-        setDeleteRequest(true)
-        console.log(comment_id, "<< click", deleteRequest)
-        const tempCommentList = [...commentsList]
-        tempCommentList.shift()
-        setCommentsList(tempCommentList)
-    }
+	if (errorState) {
+		return (
+			<p>there was a problem deleting that comment, please try again</p>
+		);
+	}
 
-    return (
-        <button onClick={handleClick}>delete your comment</button>
-    )
+	return <button onClick={handleClick}>delete your comment</button>;
 }

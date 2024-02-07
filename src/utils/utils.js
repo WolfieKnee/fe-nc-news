@@ -16,6 +16,5 @@ export function newsAPIPost(url, body) {
 }
 
 export function newsAPIDelete(url) {
-	console.log(url, "<< in util");
 	return NCNewsAPI.delete(url);
 }

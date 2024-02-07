@@ -8,30 +8,37 @@ export default function DeleteComment({
 }) {
 	const [deleteRequest, setDeleteRequest] = useState(false);
 	const [errorState, setErrorState] = useState(null);
+	const backupCommentList = [...commentsList];
 
 	useEffect(() => {
-		console.log("in useEffect");
 		if (deleteRequest) {
-			console.log("delete found in useEffect");
-			newsAPIDelete(`/comments/${comment_id}`)
-				.then((res) => {
-					setDeleteRequest(false);
-					console.log(deleteRequest, "<< deleteRequest in .then");
-				})
-				.catch((err) => {
-					console.log(err, "in catch");
-					setErrorState(true);
-				});
+			browserDelete();
+			newsAPIDelete(`/comments/${comment_id}`).catch(() => {
+				setErrorState(true);
+				setCommentsList(backupCommentList);
+			});
 		}
 	}, [deleteRequest]);
 
 	const handleClick = (e) => {
 		e.preventDefault();
 		setDeleteRequest(true);
-		console.log(comment_id, "<< click in onClick", deleteRequest);
-		const tempCommentList = [...commentsList];
-		tempCommentList.shift();
-		setCommentsList(tempCommentList);
+	};
+
+	const browserDelete = () => {
+		setCommentsList((tempCommentList) => {
+			return tempCommentList.filter(
+				(comment) => comment.comment_id !== comment_id
+			);
+		});
+	};
+
+	const browserRestore = () => {
+		setCommentsList((tempCommentList) => {
+			return tempCommentList.filter(
+				(comment) => comment.comment_id !== comment_id
+			);
+		});
 	};
 
 	if (errorState) {

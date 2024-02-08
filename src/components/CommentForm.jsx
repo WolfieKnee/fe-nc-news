@@ -65,9 +65,10 @@ export default function CommentForm({ commentsList, setCommentsList }) {
 				<fieldset>
 					<legend>add a new comment as {loggedInUser}</legend>
 					<label htmlFor="newComment">comment*:</label>
-					<input
+					<textarea
 						id="newComment"
-						type="text"
+						name="newComment"
+						rows={4}
 						value={input}
 						onChange={(e) => {
 							setInput(e.target.value);

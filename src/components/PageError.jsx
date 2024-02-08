@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 export default function PageError({ clientMessage, error = false }) {
-	console.log(error);
 	return (
 		<section name="pageError">
 			<h2>Error!</h2>

@@ -10,7 +10,7 @@ export default function ArticleCard({ article }) {
 
 	return (
 		<li className="article-card__li">
-			<Link to={`/${article.article_id}`}>
+			<Link to={`/articles/${article.article_id}`}>
 				<h3>{article.title}</h3>
 				<p>by: {article.author}</p>
 				<img

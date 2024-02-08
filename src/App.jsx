@@ -8,6 +8,7 @@ import ViewArticle from "./pages/ViewArticle";
 import UserContext from "./contexts/UserContext";
 import "./App.css";
 import TopicsList from "./pages/TopicsList";
+import PageError from "./components/PageError";
 
 function App() {
 	// note: hard coded user
@@ -19,11 +20,23 @@ function App() {
 			<main>
 				<Routes>
 					<Route path="/" element={<ArticleList />} />
-					<Route path="/:article_id" element={<ViewArticle />} />
+					<Route path="/articles" element={<ArticleList />} />
+					<Route
+						path="/articles/:article_id"
+						element={<ViewArticle />}
+					/>
 					<Route path="/topics" element={<TopicsList />} />
 					<Route
 						path="/topics/:topicSlug"
 						element={<ArticleList />}
+					/>
+					<Route
+						path="*"
+						element={
+							<PageError
+								clientMessage={" that page doesn't exist "}
+							/>
+						}
 					/>
 				</Routes>
 			</main>

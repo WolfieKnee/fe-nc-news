@@ -3,6 +3,7 @@ import newsAPIGet from "../utils/utils";
 import ArticleCard from "../components/ArticleCard";
 import { useParams } from "react-router-dom";
 import SortArticles from "../components/SortArticles";
+import PageError from "../components/PageError";
 
 export default function ArticleList() {
 	const [articlesList, setArticlesList] = useState([]);
@@ -27,15 +28,16 @@ export default function ArticleList() {
 		}
 
 		setIsLoading(true);
+		setErrorState(false);
 		newsAPIGet(`${url}?${apiQuery}`)
 			.then(({ data }) => {
 				const { articles } = data;
 				setIsLoading(false);
 				setArticlesList(articles);
 			})
-			.catch(() => {
+			.catch((err) => {
 				setIsLoading(false);
-				setErrorState(true);
+				setErrorState(err.response);
 			});
 	}, [topicSlug, sortBy, sortOrder]);
 
@@ -43,8 +45,22 @@ export default function ArticleList() {
 		return <p>loading....</p>;
 	}
 
+	if (errorState && topicSlug) {
+		return (
+			<PageError
+				clientMessage={" we couldn't the the articles for that topic."}
+				error={errorState}
+			/>
+		);
+	}
+
 	if (errorState) {
-		return <p>something went wrong getting the articles</p>;
+		return (
+			<PageError
+				clientMessage={" we couldn't get the articles."}
+				error={errorState}
+			/>
+		);
 	}
 
 	return (

@@ -42,7 +42,7 @@ export default function DeleteComment({ comment_id, setCommentsList }) {
 				delete your comment
 			</button>
 			{errorState ? (
-				<p>
+				<p className="error">
 					there was a problem deleting that comment, please refresh
 					and try again
 				</p>

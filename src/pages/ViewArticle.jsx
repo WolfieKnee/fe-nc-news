@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import newsAPIGet from "../utils/utils";
 import CommentList from "../components/CommentList";
 import ArticleVote from "../components/ArticleVote";
+import PageError from "../components/PageError";
 
 export default function ViewArticle() {
 	const [articleData, setArticleData] = useState({});
@@ -19,9 +20,9 @@ export default function ViewArticle() {
 				setIsLoading(false);
 				setArticleData(article);
 			})
-			.catch(() => {
+			.catch((err) => {
 				setIsLoading(false);
-				setErrorState(true);
+				setErrorState(err.response);
 			});
 	}, []);
 
@@ -30,7 +31,12 @@ export default function ViewArticle() {
 	}
 
 	if (errorState) {
-		return <p>something went wrong getting the article</p>;
+		return (
+			<PageError
+				clientMessage={" we couldn't get that article for you."}
+				error={errorState}
+			/>
+		);
 	}
 
 	const articleDate = new Date(articleData.created_at);

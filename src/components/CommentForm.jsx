@@ -77,10 +77,12 @@ export default function CommentForm({ commentsList, setCommentsList }) {
 					<p>*required</p>
 				</fieldset>
 				{errorState === "empty" ? (
-					<p>comments need to have content, please try again</p>
+					<p className="error">
+						comments need to have content, please try again
+					</p>
 				) : null}
 				{errorState && errorState !== "empty" ? (
-					<p>
+					<p className="error">
 						something went wrong posting your comment, please try
 						again
 					</p>

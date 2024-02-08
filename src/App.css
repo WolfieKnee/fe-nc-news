@@ -25,6 +25,11 @@ header {
 	background: red;
 }
 
+.error {
+	color: red;
+	text-decoration: solid;
+}
+
 /* article list */
 .article-list {
 	display: flex;

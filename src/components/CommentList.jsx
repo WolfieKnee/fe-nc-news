@@ -30,7 +30,9 @@ export default function CommentList() {
 	}
 
 	if (errorState) {
-		return <p>something went wrong getting the comments</p>;
+		return (
+			<p className="error">something went wrong getting the comments</p>
+		);
 	}
 	return (
 		<div name="comments">

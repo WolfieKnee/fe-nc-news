@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import newsAPIGet from "../utils/utils";
+import PageError from "../components/PageError";
 
 export default function TopicsList() {
 	const [topicList, setTopicList] = useState([]);
@@ -16,9 +17,9 @@ export default function TopicsList() {
 				setIsLoading(false);
 				setTopicList(topics);
 			})
-			.catch(() => {
+			.catch((err) => {
 				setIsLoading(false);
-				setErrorState(true);
+				setErrorState(err.response);
 			});
 	}, []);
 
@@ -27,10 +28,14 @@ export default function TopicsList() {
 	}
 
 	if (errorState) {
-		return <p>something went wrong getting the topics</p>;
+		<PageError
+			clientMessage={" we couldn't get the topics for you."}
+			error={errorState}
+		/>;
 	}
 	return (
 		<div name="topic List">
+			<h3>Articles are available on the following topics:</h3>
 			<ul className="topic-list">
 				{topicList.map((topic) => {
 					return (

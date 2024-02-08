@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import newsAPIGet from "../utils/utils";
 import ArticleCard from "../components/ArticleCard";
 import { useParams } from "react-router-dom";
+import SortArticles from "../components/SortArticles";
 
 export default function ArticleList() {
 	const [articlesList, setArticlesList] = useState([]);
@@ -9,15 +10,24 @@ export default function ArticleList() {
 	const [errorState, setErrorState] = useState(null);
 
 	const { topicSlug } = useParams();
+	const [sortBy, setSortBy] = useState("");
+	const [sortOrder, setSortOrder] = useState("desc");
 
 	useEffect(() => {
-		let url = "/articles";
+		const url = "/articles";
+		const apiQuery = new URLSearchParams();
 		if (topicSlug) {
-			console.log(topicSlug);
-			url += `/?topic=${topicSlug}`;
+			apiQuery.append("topic", topicSlug);
 		}
+		if (sortBy) {
+			apiQuery.append("sort_by", sortBy);
+		}
+		if (sortOrder) {
+			apiQuery.append("order", sortOrder);
+		}
+
 		setIsLoading(true);
-		newsAPIGet(url)
+		newsAPIGet(`${url}?${apiQuery}`)
 			.then(({ data }) => {
 				const { articles } = data;
 				setIsLoading(false);
@@ -27,7 +37,7 @@ export default function ArticleList() {
 				setIsLoading(false);
 				setErrorState(true);
 			});
-	}, [topicSlug]);
+	}, [topicSlug, sortBy, sortOrder]);
 
 	if (isLoading) {
 		return <p>loading....</p>;
@@ -44,6 +54,12 @@ export default function ArticleList() {
 					{articlesList.length} articles on {topicSlug}
 				</h2>
 			) : null}
+			<SortArticles
+				sortBy={sortBy}
+				setSortBy={setSortBy}
+				sortOrder={sortOrder}
+				setSortOrder={setSortOrder}
+			/>
 			<ul className="article-list">
 				{articlesList.map((article) => {
 					return (

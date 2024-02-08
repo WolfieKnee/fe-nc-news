@@ -3,6 +3,10 @@
 I completed this front end project as part of the Software Development Bootcamp with [Northcoders](https://northcoders.com/). The project "NC News" uses [React](https://react.dev/) to access the [NC News backend API](https://github.com/WolfieKnee/fe-nc-news) which I developed as a back end project. It is now live, and deployed via [Netlify](https://www.netlify.com/) at:
 https://celebrated-biscochitos-30e593.netlify.app/
 
+## Development
+
+The development process was driven by a set of user stories. These were illustrated using wireframes based on mobile-first principles. A component tree was then used to define the structure of the site, with consideration to Reacts state, props and context, as well as API calls and queries.
+
 ## Software
 
 This project was completed using:

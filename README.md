@@ -32,6 +32,16 @@ You can then run the site locally using Vite with:
 $ npm run dev
 ```
 
+If you're using your own api, then this can be configured by changing the axios base url in the utils.js file:
+
+```
+|_src
+    |_utils
+        |_utils.js
+
+baseURL: "https://yoursite.com/api",
+```
+
 The site can be built with:
 
 ```

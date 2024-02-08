@@ -11,7 +11,7 @@ export default function ArticleList() {
 	const [errorState, setErrorState] = useState(null);
 
 	const { topicSlug } = useParams();
-	const [sortBy, setSortBy] = useState("");
+	const [sortBy, setSortBy] = useState("created_at");
 	const [sortOrder, setSortOrder] = useState("desc");
 
 	useEffect(() => {
@@ -29,7 +29,7 @@ export default function ArticleList() {
 
 		setIsLoading(true);
 		setErrorState(false);
-		newsAPIGet(`${url}?${apiQuery}`)
+		newsAPIGet(url, apiQuery)
 			.then(({ data }) => {
 				const { articles } = data;
 				setIsLoading(false);
@@ -48,7 +48,9 @@ export default function ArticleList() {
 	if (errorState && topicSlug) {
 		return (
 			<PageError
-				clientMessage={" we couldn't the the articles for that topic."}
+				clientMessage={
+					" we couldn't get the the articles for that topic."
+				}
 				error={errorState}
 			/>
 		);

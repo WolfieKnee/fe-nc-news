@@ -3,8 +3,8 @@ const NCNewsAPI = axios.create({
 	baseURL: "https://nc-news-wa7h.onrender.com/api",
 });
 
-export default function newsAPIGet(url) {
-	return NCNewsAPI.get(url);
+export default function newsAPIGet(url, params) {
+	return NCNewsAPI.get(url, { params });
 }
 
 export function newsAPIPatch(url, body) {

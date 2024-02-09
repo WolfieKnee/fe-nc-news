@@ -5,12 +5,12 @@ export default function Navigation() {
 	return (
 		<nav>
 			<ul className={styles.navigation}>
-				<NavLink to="/">
-					<li>Home</li>
-				</NavLink>
-				<NavLink to="/topics">
-					<li>Topics</li>
-				</NavLink>
+				<li>
+					<NavLink to="/">Home</NavLink>
+				</li>
+				<li>
+					<NavLink to="/topics">Topics</NavLink>
+				</li>
 			</ul>
 		</nav>
 	);

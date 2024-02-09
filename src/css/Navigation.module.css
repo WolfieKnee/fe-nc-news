@@ -1,21 +1,20 @@
 .navigation {
-	list-style: none;
 	display: flex;
-	margin-right: 10px;
 }
 
-.navigation :hover {
+.navigation li {
+	padding: 20px 10px;
+	list-style: none;
+	text-decoration: none;
+	font-size: large;
+}
+
+.navigation li:hover {
 	background: var(--platinum);
 }
 
 .navigation :active {
 	background: var(--viridian);
-}
-
-.navigation li {
-	margin: 5px 10px;
-	text-decoration: none;
-	font-size: large;
 }
 
 .navigation a,

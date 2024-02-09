@@ -4,6 +4,7 @@ import ArticleCard from "../components/ArticleCard";
 import { useParams } from "react-router-dom";
 import SortArticles from "../components/SortArticles";
 import PageError from "../components/PageError";
+import styles from "../css/ArticleList.module.css";
 
 export default function ArticleList() {
 	const [articlesList, setArticlesList] = useState([]);
@@ -78,7 +79,7 @@ export default function ArticleList() {
 				sortOrder={sortOrder}
 				setSortOrder={setSortOrder}
 			/>
-			<ul className="article-list">
+			<ul className={styles.articleList}>
 				{articlesList.map((article) => {
 					return (
 						<ArticleCard

@@ -1,0 +1,34 @@
+.sortForm {
+	display: flex;
+	flex-wrap: wrap;
+	width: 60%;
+	min-width: 300px;
+	margin-inline: auto;
+	border: 1px var(--platinum) solid;
+	border-radius: 5px;
+	background: var(--celadon);
+}
+
+.sortForm fieldset {
+	border: none;
+	margin: 5px;
+	display: flex;
+}
+
+.sortForm label {
+	padding-inline: 5px;
+}
+
+.sortForm select {
+	background: var(--platinum);
+	border: 1px solid var(--night);
+	border-radius: 5px;
+	height: 90%;
+	font: inherit;
+	padding: 2px;
+}
+
+.sortForm input {
+	height: 90%;
+	aspect-ratio: 1;
+}

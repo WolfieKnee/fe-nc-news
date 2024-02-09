@@ -1,0 +1,7 @@
+.pageError h2 {
+	color: red;
+}
+
+.pageError p {
+	margin-inline: 40px;
+}

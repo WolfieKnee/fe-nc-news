@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 import DeleteComment from "./DeleteComment";
+import styles from "../css/CommentCard.module.css";
 
 export default function CommentCard({ comment, setCommentsList }) {
 	const { loggedInUser } = useContext(UserContext);
@@ -12,7 +13,7 @@ export default function CommentCard({ comment, setCommentsList }) {
 		year: "numeric",
 	});
 	return (
-		<li className="comment-card__li">
+		<li className={styles.commentCard__li}>
 			<h3>
 				On {dateStr}, {comment.author} commented:
 			</h3>

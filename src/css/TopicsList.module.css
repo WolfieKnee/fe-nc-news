@@ -1,0 +1,8 @@
+.topicsList * {
+	margin: 0;
+}
+
+.topicsList ul li {
+	margin-inline: 40px;
+	margin-block: 10px;
+}

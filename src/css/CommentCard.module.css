@@ -1,0 +1,13 @@
+.commentCard__li {
+	background: var(--rizzo);
+	border: 1px black solid;
+	border-radius: 5px;
+	width: 280px;
+	list-style-type: none;
+	padding: 5px;
+	text-align: left;
+}
+
+.commentCard__li h3 {
+	margin: 5px;
+}

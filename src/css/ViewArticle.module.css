@@ -1,0 +1,18 @@
+.article__content {
+	background: var(--celadon);
+	border-radius: 5px;
+	border: 2px solid var(--platinum);
+	margin-block: 10px;
+	padding-block: 10px;
+}
+
+.article__content > img {
+	width: 100%;
+	margin-block: 10px;
+}
+
+.article__content h2,
+h3,
+p {
+	margin-inline: 10px;
+}

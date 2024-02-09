@@ -1,0 +1,16 @@
+.comment__list {
+	background: var(--celadon);
+	border-radius: 5px;
+	border: 2px solid var(--platinum);
+	margin-block: 10px;
+	padding-block: 10px;
+	padding: 10px;
+	text-align: center;
+}
+
+.comment__list ol {
+	justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+}

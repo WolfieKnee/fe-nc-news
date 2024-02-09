@@ -16,7 +16,8 @@
 body {
 	max-width: 1000px;
 	min-width: 300px;
-	margin: auto;
+	margin-inline: auto;
+	margin-block: 30px;
 	font-family: "Lucida Console", monospace;
 	background: var(--cinereous);
 	color: var(--night);

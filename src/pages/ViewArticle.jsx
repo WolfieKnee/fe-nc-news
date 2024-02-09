@@ -50,7 +50,11 @@ export default function ViewArticle() {
 
 	return (
 		<section name="article">
-			<div name="articleContent" className={styles.article__content}>
+			<div
+				name="articleContent"
+				title={articleData.title}
+				className={styles.article__content}
+			>
 				<div className={styles.article__header}>
 					<h2>{articleData.title}</h2>
 					<h3>by: {articleData.author}</h3>
@@ -64,7 +68,7 @@ export default function ViewArticle() {
 				</div>
 				<img
 					src={articleData.article_img_url}
-					alt={`image for ${articleData.title} about ${articleData.topic}`}
+					alt={`image about ${articleData.topic}`}
 				/>
 				<div className={styles.article__text}>
 					<p>{articleData.body}</p>

@@ -46,6 +46,7 @@ export default function ArticleVote({ articleVotes }) {
 			votes:{votes}
 			{!hasVoted ? (
 				<button
+					title="down-vote this article"
 					className="article__content-button"
 					onClick={(e) => handleVote(e, -1)}
 				>
@@ -54,6 +55,7 @@ export default function ArticleVote({ articleVotes }) {
 			) : null}
 			{!hasVoted ? (
 				<button
+					title="up-vote this article"
 					className="article__content-button"
 					onClick={(e) => handleVote(e, 1)}
 				>

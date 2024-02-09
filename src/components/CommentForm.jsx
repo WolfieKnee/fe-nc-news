@@ -61,8 +61,12 @@ export default function CommentForm({ commentsList, setCommentsList }) {
 	};
 
 	return (
-		<section name="comments" className={styles.comment__form}>
-			<form onSubmit={handleSubmit}>
+		<section
+			name="comments"
+			title="comments"
+			className={styles.comment__form}
+		>
+			<form onSubmit={handleSubmit} title="new comment form">
 				<label htmlFor="newComment">
 					add a new comment as {loggedInUser}
 				</label>

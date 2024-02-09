@@ -24,7 +24,12 @@ export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
 		<form className={styles.sortForm}>
 			<fieldset>
 				<label htmlFor="sort_by">sort by: </label>
-				<select name="sort_by" value={sortBy} onChange={handleSortBy}>
+				<select
+					name="sort_by"
+					id="sort_by"
+					value={sortBy}
+					onChange={handleSortBy}
+				>
 					<option value="author">author</option>
 					<option value="created_at">date</option>
 					<option value="title">title</option>
@@ -38,6 +43,7 @@ export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
 					className={styles.checkMark}
 					type="radio"
 					name="sortOrder"
+					id="asc"
 					value="asc"
 					checked={sortOrder === "asc"}
 					onChange={handleSortOrder}
@@ -46,6 +52,7 @@ export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
 				<input
 					className={styles.checkMark}
 					type="radio"
+					id="desc"
 					name="sortOrder"
 					value="desc"
 					checked={sortOrder === "desc"}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { newsAPIPatch } from "../utils/utils";
+import styles from "../css/ArticleVote.module.css";
 
 export default function ArticleVote({ articleVotes }) {
 	const [votes, setVotes] = useState(articleVotes);
@@ -41,8 +42,8 @@ export default function ArticleVote({ articleVotes }) {
 	}
 
 	return (
-		<p>
-			votes:
+		<p className={styles.votes}>
+			votes:{votes}
 			{!hasVoted ? (
 				<button
 					className="article__content-button"
@@ -51,7 +52,6 @@ export default function ArticleVote({ articleVotes }) {
 					-
 				</button>
 			) : null}
-			{votes}
 			{!hasVoted ? (
 				<button
 					className="article__content-button"

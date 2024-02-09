@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import newsAPIGet from "../utils/utils";
 import PageError from "../components/PageError";
+import styles from "../css/TopicsList.module.css";
 
 export default function TopicsList() {
 	const [topicList, setTopicList] = useState([]);
@@ -34,9 +35,9 @@ export default function TopicsList() {
 		/>;
 	}
 	return (
-		<div name="topic List">
+		<div className={styles.topicsList}>
 			<h3>Articles are available on the following topics:</h3>
-			<ul className="topic-list">
+			<ul>
 				{topicList.map((topic) => {
 					return (
 						<li key={topic.slug}>

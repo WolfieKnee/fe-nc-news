@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { newsAPIDelete } from "../utils/utils";
+import styles from "../css/DeleteComment.module.css";
 
 export default function DeleteComment({ comment_id, setCommentsList }) {
 	const [deleteRequest, setDeleteRequest] = useState(false);
@@ -37,7 +38,7 @@ export default function DeleteComment({ comment_id, setCommentsList }) {
 	};
 
 	return (
-		<span>
+		<span className={styles.deleteComment}>
 			<button onClick={handleClick} disabled={isLoading}>
 				delete your comment
 			</button>

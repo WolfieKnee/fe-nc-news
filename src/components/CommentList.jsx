@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import newsAPIGet from "../utils/utils";
 import CommentCard from "./CommentCard";
 import CommentForm from "../components/CommentForm";
+import styles from "../css/CommentList.module.css";
 
 export default function CommentList() {
 	const [commentsList, setCommentsList] = useState([]);
@@ -35,7 +36,7 @@ export default function CommentList() {
 		);
 	}
 	return (
-		<div name="comments">
+		<div name="comments" className={styles.comment__list}>
 			<h2>{commentsList.length} Comments</h2>
 			<CommentForm
 				commentsList={commentsList}

@@ -1,0 +1,40 @@
+/* core site styling */
+:root {
+	--night: #12130fff;
+	--viridian: #5b9279ff;
+	--celadon: #b8cbfa70;
+	--platinum: #eae6e5ff;
+	--cinereous: #b4c0c0;
+	--rizzo: rgba(255, 237, 190, 0.727);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	max-width: 1000px;
+	min-width: 300px;
+	margin: auto;
+	font-family: "Lucida Console", monospace;
+	background: var(--cinereous);
+	color: var(--night);
+}
+
+main {
+	color: var(--night);
+	margin-inline: 10px;
+}
+
+.error {
+	color: red;
+}
+
+:link {
+	color: var(--night);
+}
+
+:link:hover {
+	text-decoration: none;
+}

@@ -6,6 +6,8 @@ import CommentList from "../components/CommentList";
 import ArticleVote from "../components/ArticleVote";
 import PageError from "../components/PageError";
 
+import styles from "../css/ViewArticle.module.css";
+
 export default function ViewArticle() {
 	const [articleData, setArticleData] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
@@ -47,29 +49,26 @@ export default function ViewArticle() {
 	});
 
 	return (
-		<section name="article" className="article__section">
-			<h1>{articleData.title}</h1>
-			<h2>by: {articleData.author}</h2>
-			<p>
-				{dateStr} Topic:{" "}
-				<Link to={`/topics/${articleData.topic}`}>
-					{" "}
-					{articleData.topic}
-				</Link>
-			</p>
-			<div name="articleContent" className="article__content">
+		<section name="article">
+			<div name="articleContent" className={styles.article__content}>
+				<h2>{articleData.title}</h2>
+				<h3>by: {articleData.author}</h3>
+				<p>
+					{dateStr} Topic:{" "}
+					<Link to={`/topics/${articleData.topic}`}>
+						{" "}
+						{articleData.topic}
+					</Link>
+				</p>
 				<img
 					src={articleData.article_img_url}
 					alt={`image for ${articleData.title} about ${articleData.topic}`}
 				/>
-				<div>
-					<p>{articleData.body}</p>
-					{articleData.votes !== undefined && (
-						<ArticleVote articleVotes={articleData.votes} />
-					)}
-				</div>
+				<p>{articleData.body}</p>
+				{articleData.votes !== undefined && (
+					<ArticleVote articleVotes={articleData.votes} />
+				)}
 			</div>
-			{/* TODO: advanced styling - add a show-hide for this list */}
 			<CommentList />
 		</section>
 	);

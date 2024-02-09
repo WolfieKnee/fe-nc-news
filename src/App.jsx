@@ -6,9 +6,10 @@ import Navigation from "./components/Navigation";
 import ArticleList from "./pages/ArticleList";
 import ViewArticle from "./pages/ViewArticle";
 import UserContext from "./contexts/UserContext";
-import "./App.css";
 import TopicsList from "./pages/TopicsList";
 import PageError from "./components/PageError";
+
+import styles from "./css/App.module.css";
 
 function App() {
 	// note: hard coded user

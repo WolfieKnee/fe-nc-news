@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { newsAPIPost } from "../utils/utils";
 import { useParams } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
+import styles from "../css/CommentForm.module.css";
 
 export default function CommentForm({ commentsList, setCommentsList }) {
 	const [input, setInput] = useState("");
@@ -60,36 +61,34 @@ export default function CommentForm({ commentsList, setCommentsList }) {
 	};
 
 	return (
-		<>
+		<section name="comments" className={styles.comment__form}>
 			<form onSubmit={handleSubmit}>
-				<fieldset>
-					<legend>add a new comment as {loggedInUser}</legend>
-					<label htmlFor="newComment">comment*:</label>
-					<textarea
-						id="newComment"
-						name="newComment"
-						rows={4}
-						value={input}
-						onChange={(e) => {
-							setInput(e.target.value);
-						}}
-						placeholder="your comment"
-					/>
-					<p>*required</p>
-				</fieldset>
+				<label htmlFor="newComment">
+					add a new comment as {loggedInUser}
+				</label>
+				<textarea
+					id="newComment"
+					name="newComment"
+					rows={4}
+					value={input}
+					onChange={(e) => {
+						setInput(e.target.value);
+					}}
+					placeholder="your comment"
+				/>
 				{errorState === "empty" ? (
-					<p className="error">
+					<p className={styles.error}>
 						comments need to have content, please try again
 					</p>
 				) : null}
 				{errorState && errorState !== "empty" ? (
-					<p className="error">
+					<p className={styles.error}>
 						something went wrong posting your comment, please try
 						again
 					</p>
 				) : null}
 				<button type="submit">submit comment</button>
 			</form>
-		</>
+		</section>
 	);
 }

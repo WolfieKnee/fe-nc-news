@@ -1,0 +1,25 @@
+.navigation {
+	list-style: none;
+	display: flex;
+	margin-right: 10px;
+}
+
+.navigation :hover {
+	background: var(--platinum);
+}
+
+.navigation :active {
+	background: var(--viridian);
+}
+
+.navigation li {
+	margin: 5px 10px;
+	text-decoration: none;
+	font-size: large;
+}
+
+.navigation a,
+a:visited {
+	text-decoration: none;
+	color: var(--night);
+}

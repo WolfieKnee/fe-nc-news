@@ -1,0 +1,27 @@
+.articleCard__img {
+	width: 100%;
+}
+
+.articleCard__li {
+	background: var(--celadon);
+	border: 1px var(--platinum) solid;
+	border-radius: 5px;
+	width: 300px;
+	min-width: 300px;
+	overflow: auto;
+	text-decoration: none;
+	padding-block: 5px;
+}
+
+.articleCard__li h3,
+p {
+	margin-inline: 5px;
+}
+
+.articleCard__li:hover {
+	box-shadow: 10px 10px 15px var(--platinum);
+}
+
+.articleCard__li:active {
+	box-shadow: 5px 5px 10px var(--celadon);
+}

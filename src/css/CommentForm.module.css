@@ -1,0 +1,23 @@
+.comment__form {
+	border: 1px var(--platinum) solid;
+	border-radius: 5px;
+	background: var(--celadon);
+	width: 280px;
+	padding: 5px;
+	margin-block: 5px;
+	margin-inline: auto;
+}
+
+.comment__form * {
+	margin-inline: auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.comment__form button {
+	font: inherit;
+}
+
+.error {
+	color: red;
+}

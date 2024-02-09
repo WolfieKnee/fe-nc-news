@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import styles from "../css/SortArticles.module.css";
 
 export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -20,20 +21,21 @@ export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
 	};
 
 	return (
-		<form>
+		<form className={styles.sortForm}>
 			<fieldset>
 				<label htmlFor="sort_by">sort by: </label>
 				<select name="sort_by" value={sortBy} onChange={handleSortBy}>
+					<option value="author">author</option>
 					<option value="created_at">date</option>
 					<option value="title">title</option>
 					<option value="topic">topic</option>
-					<option value="author">author</option>
 					<option value="votes">votes</option>
-					{/* <option value="commentCount">comment count</option> */}
 				</select>
-
+			</fieldset>
+			<fieldset>
 				<label htmlFor="asc">ascending</label>
 				<input
+					className={styles.checkMark}
 					type="radio"
 					name="sortOrder"
 					value="asc"
@@ -42,6 +44,7 @@ export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
 				/>
 				<label htmlFor="desc">descending</label>
 				<input
+					className={styles.checkMark}
 					type="radio"
 					name="sortOrder"
 					value="desc"

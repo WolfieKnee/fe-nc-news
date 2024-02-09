@@ -1,0 +1,7 @@
+header {
+	border-bottom: solid black 2px;
+}
+
+header * {
+	margin-inline: 10px;
+}

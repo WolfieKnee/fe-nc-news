@@ -18,6 +18,10 @@
 	font: inherit;
 }
 
+.comment__form textarea {
+	width: 90%;
+}
+
 .error {
 	color: red;
 }

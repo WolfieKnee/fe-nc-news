@@ -51,23 +51,27 @@ export default function ViewArticle() {
 	return (
 		<section name="article">
 			<div name="articleContent" className={styles.article__content}>
-				<h2>{articleData.title}</h2>
-				<h3>by: {articleData.author}</h3>
-				<p>
-					{dateStr} Topic:{" "}
-					<Link to={`/topics/${articleData.topic}`}>
-						{" "}
-						{articleData.topic}
-					</Link>
-				</p>
+				<div className={styles.article__header}>
+					<h2>{articleData.title}</h2>
+					<h3>by: {articleData.author}</h3>
+					<p>
+						{dateStr} Topic:{" "}
+						<Link to={`/topics/${articleData.topic}`}>
+							{" "}
+							{articleData.topic}
+						</Link>
+					</p>
+				</div>
 				<img
 					src={articleData.article_img_url}
 					alt={`image for ${articleData.title} about ${articleData.topic}`}
 				/>
-				<p>{articleData.body}</p>
-				{articleData.votes !== undefined && (
-					<ArticleVote articleVotes={articleData.votes} />
-				)}
+				<div className={styles.article__text}>
+					<p>{articleData.body}</p>
+					{articleData.votes !== undefined && (
+						<ArticleVote articleVotes={articleData.votes} />
+					)}
+				</div>
 			</div>
 			<CommentList />
 		</section>

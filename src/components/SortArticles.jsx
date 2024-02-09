@@ -21,8 +21,8 @@ export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
 	};
 
 	return (
-		<form className={styles.sortForm}>
-			<fieldset>
+		<form className={styles.sortForm} name="sort form" title="sort form">
+			<fieldset title="sort by">
 				<label htmlFor="sort_by">sort by: </label>
 				<select
 					name="sort_by"
@@ -37,7 +37,7 @@ export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
 					<option value="votes">votes</option>
 				</select>
 			</fieldset>
-			<fieldset>
+			<fieldset title="sort order">
 				<label htmlFor="asc">ascending</label>
 				<input
 					className={styles.checkMark}

@@ -10,14 +10,14 @@ export default function ArticleCard({ article }) {
 	});
 
 	return (
-		<li className={styles.articleCard__li}>
+		<li className={styles.articleCard__li} title={article.title}>
 			<Link to={`/articles/${article.article_id}`}>
 				<h3>{article.title}</h3>
 				<p>by: {article.author}</p>
 				<img
 					className={styles.articleCard__img}
 					src={article.article_img_url}
-					alt={`image for this article ${article.title} which is about ${article.topic}`}
+					alt={`image about ${article.topic}`}
 				/>
 			</Link>
 			<p>on: {dateStr}</p>

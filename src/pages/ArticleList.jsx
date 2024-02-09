@@ -67,7 +67,14 @@ export default function ArticleList() {
 	}
 
 	return (
-		<div name="article List">
+		<section
+			name="article list"
+			title={
+				!topicSlug
+					? "article list"
+					: `${articlesList.length} articles about ${topicSlug}`
+			}
+		>
 			{topicSlug ? (
 				<h2>
 					{articlesList.length} articles on {topicSlug}
@@ -89,6 +96,6 @@ export default function ArticleList() {
 					);
 				})}
 			</ul>
-		</div>
+		</section>
 	);
 }

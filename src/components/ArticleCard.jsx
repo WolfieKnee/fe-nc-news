@@ -10,11 +10,8 @@ export default function ArticleCard({ article }) {
 	});
 
 	return (
-		<Link
-			to={`/articles/${article.article_id}`}
-			className={styles.articleCard__li}
-		>
-			<li>
+		<li className={styles.articleCard__li}>
+			<Link to={`/articles/${article.article_id}`}>
 				<h3>{article.title}</h3>
 				<p>by: {article.author}</p>
 				<img
@@ -22,14 +19,14 @@ export default function ArticleCard({ article }) {
 					src={article.article_img_url}
 					alt={`image for this article ${article.title} which is about ${article.topic}`}
 				/>
-				<p>on: {dateStr}</p>
-				<p>votes: {article.votes}</p>
-				<p>
-					topic:{" "}
-					<Link to={`/topics/${article.topic}`}>{article.topic}</Link>
-				</p>
-				<p>comments: {article.comment_count}</p>
-			</li>
-		</Link>
+			</Link>
+			<p>on: {dateStr}</p>
+			<p>votes: {article.votes}</p>
+			<p>comments: {article.comment_count}</p>
+			<p>
+				topic:{" "}
+				<Link to={`/topics/${article.topic}`}>{article.topic}</Link>
+			</p>
+		</li>
 	);
 }

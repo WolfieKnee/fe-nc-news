@@ -1,5 +1,6 @@
 .articleCard__img {
 	width: 100%;
+	height: auto;
 }
 
 .articleCard__li {
@@ -8,8 +9,7 @@
 	border-radius: 5px;
 	width: 300px;
 	min-width: 300px;
-	overflow: auto;
-	text-decoration: none;
+	list-style: none;
 	padding-block: 5px;
 }
 

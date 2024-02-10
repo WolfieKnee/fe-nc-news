@@ -15,6 +15,8 @@ export default function ArticleList() {
 	const [sortBy, setSortBy] = useState("created_at");
 	const [sortOrder, setSortOrder] = useState("desc");
 	const [perPage, setPerPage] = useState("all");
+	const [page, setPage] = useState(1);
+	const [totalCount, setTotalCount] = useState("1");
 
 	useEffect(() => {
 		const apiUrl = "/articles";
@@ -30,16 +32,17 @@ export default function ArticleList() {
 		}
 		if (perPage !== "all") {
 			apiQuery.append("limit", perPage);
+			apiQuery.append("p", page);
 		}
 		setIsLoading(true);
 		setErrorState(false);
 		newsAPIGet(apiUrl, apiQuery)
 			.then(({ data }) => {
 				if (perPage !== "all") {
-					console.log(data);
 					const { articlesPage } = data.articles;
-					console.log(articlesPage);
+					const { total_count } = data.articles;
 					setArticlesList(articlesPage);
+					setTotalCount(total_count);
 				} else {
 					const { articles } = data;
 					setArticlesList(articles);
@@ -50,7 +53,7 @@ export default function ArticleList() {
 				setIsLoading(false);
 				setErrorState(err.response);
 			});
-	}, [topicSlug, sortBy, sortOrder, perPage]);
+	}, [topicSlug, sortBy, sortOrder, perPage, page]);
 
 	if (isLoading) {
 		return <p>loading....</p>;
@@ -97,6 +100,8 @@ export default function ArticleList() {
 				setSortOrder={setSortOrder}
 				perPage={perPage}
 				setPerPage={setPerPage}
+				page={page}
+				setPage={setPage}
 			/>
 			<ul className={styles.articleList}>
 				{articlesList.map((article) => {

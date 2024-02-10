@@ -8,6 +8,8 @@ export default function ({
 	setSortOrder,
 	perPage,
 	setPerPage,
+	page,
+	setPage,
 }) {
 	const [searchParams, setSearchParams] = useSearchParams();
 
@@ -32,6 +34,15 @@ export default function ({
 		setPerPage(e.target.value);
 		const newParams = new URLSearchParams(searchParams);
 		newParams.set("limit", e.target.value);
+		newParams.append("p", page);
+		setSearchParams(newParams);
+	};
+
+	const handlePage = (e, direction) => {
+		e.preventDefault();
+		setPage(Number(page) + Number(direction));
+		const newParams = new URLSearchParams(searchParams);
+		newParams.set("p", page + Number(direction));
 		setSearchParams(newParams);
 	};
 
@@ -90,6 +101,9 @@ export default function ({
 					<option value="10">10</option>
 					<option value="all">all</option>
 				</select>
+				<button onClick={(e) => handlePage(e, -1)}>previous</button>
+				page {page}
+				<button onClick={(e) => handlePage(e, 1)}>next</button>
 			</fieldset>
 		</form>
 	);

@@ -1,7 +1,14 @@
 import { useSearchParams } from "react-router-dom";
 import styles from "../css/SortArticles.module.css";
 
-export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
+export default function ({
+	sortBy,
+	setSortBy,
+	sortOrder,
+	setSortOrder,
+	perPage,
+	setPerPage,
+}) {
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const handleSortBy = (e) => {
@@ -17,6 +24,14 @@ export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
 		setSortOrder(e.target.value);
 		const newParams = new URLSearchParams(searchParams);
 		newParams.set("sort", e.target.value);
+		setSearchParams(newParams);
+	};
+
+	const handlePerPage = (e) => {
+		e.preventDefault();
+		setPerPage(e.target.value);
+		const newParams = new URLSearchParams(searchParams);
+		newParams.set("limit", e.target.value);
 		setSearchParams(newParams);
 	};
 
@@ -58,6 +73,23 @@ export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
 					checked={sortOrder === "desc"}
 					onChange={handleSortOrder}
 				/>
+			</fieldset>
+			<fieldset
+				className={styles.pagination}
+				name="pagination"
+				title="pagination"
+			>
+				<label htmlFor="perPage">articles per page: </label>
+				<select
+					name="perPage"
+					id="perPage"
+					value={perPage}
+					onChange={handlePerPage}
+				>
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="all">all</option>
+				</select>
 			</fieldset>
 		</form>
 	);

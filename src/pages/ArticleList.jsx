@@ -14,9 +14,10 @@ export default function ArticleList() {
 	const { topicSlug } = useParams();
 	const [sortBy, setSortBy] = useState("created_at");
 	const [sortOrder, setSortOrder] = useState("desc");
+	const [perPage, setPerPage] = useState("all");
 
 	useEffect(() => {
-		const url = "/articles";
+		const apiUrl = "/articles";
 		const apiQuery = new URLSearchParams();
 		if (topicSlug) {
 			apiQuery.append("topic", topicSlug);
@@ -27,20 +28,29 @@ export default function ArticleList() {
 		if (sortOrder) {
 			apiQuery.append("order", sortOrder);
 		}
-
+		if (perPage !== "all") {
+			apiQuery.append("limit", perPage);
+		}
 		setIsLoading(true);
 		setErrorState(false);
-		newsAPIGet(url, apiQuery)
+		newsAPIGet(apiUrl, apiQuery)
 			.then(({ data }) => {
-				const { articles } = data;
+				if (perPage !== "all") {
+					console.log(data);
+					const { articlesPage } = data.articles;
+					console.log(articlesPage);
+					setArticlesList(articlesPage);
+				} else {
+					const { articles } = data;
+					setArticlesList(articles);
+				}
 				setIsLoading(false);
-				setArticlesList(articles);
 			})
 			.catch((err) => {
 				setIsLoading(false);
 				setErrorState(err.response);
 			});
-	}, [topicSlug, sortBy, sortOrder]);
+	}, [topicSlug, sortBy, sortOrder, perPage]);
 
 	if (isLoading) {
 		return <p>loading....</p>;
@@ -85,6 +95,8 @@ export default function ArticleList() {
 				setSortBy={setSortBy}
 				sortOrder={sortOrder}
 				setSortOrder={setSortOrder}
+				perPage={perPage}
+				setPerPage={setPerPage}
 			/>
 			<ul className={styles.articleList}>
 				{articlesList.map((article) => {

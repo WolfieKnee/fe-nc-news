@@ -4,6 +4,7 @@ import newsAPIGet from "../utils/utils";
 import CommentCard from "./CommentCard";
 import CommentForm from "../components/CommentForm";
 import styles from "../css/CommentList.module.css";
+import Expandable from "./Expandable";
 
 export default function CommentList() {
 	const [commentsList, setCommentsList] = useState([]);
@@ -42,18 +43,20 @@ export default function CommentList() {
 				commentsList={commentsList}
 				setCommentsList={setCommentsList}
 			/>
-			<ol className="comments-list__ol">
-				{commentsList.map((comment) => {
-					return (
-						<CommentCard
-							key={comment.comment_id}
-							comment={comment}
-							commentsList={commentsList}
-							setCommentsList={setCommentsList}
-						/>
-					);
-				})}
-			</ol>
+			<Expandable>
+				<ol className="comments-list__ol">
+					{commentsList.map((comment) => {
+						return (
+							<CommentCard
+								key={comment.comment_id}
+								comment={comment}
+								commentsList={commentsList}
+								setCommentsList={setCommentsList}
+							/>
+						);
+					})}
+				</ol>
+			</Expandable>
 		</div>
 	);
 }

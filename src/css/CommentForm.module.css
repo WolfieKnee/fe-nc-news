@@ -16,6 +16,7 @@
 
 .comment__form button {
 	font: inherit;
+	padding: 5px 10px;
 }
 
 .comment__form textarea {

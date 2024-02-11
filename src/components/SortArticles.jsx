@@ -1,4 +1,3 @@
-import { useSearchParams } from "react-router-dom";
 import styles from "../css/SortArticles.module.css";
 
 export default function ({
@@ -10,9 +9,8 @@ export default function ({
 	setPerPage,
 	page,
 	setPage,
+	totalCount,
 }) {
-	const [searchParams, setSearchParams] = useSearchParams();
-
 	const handleSortBy = (e) => {
 		e.preventDefault();
 		setSortBy(e.target.value);
@@ -88,9 +86,27 @@ export default function ({
 					<option value="10">10</option>
 					<option value="all">all</option>
 				</select>
-				<button onClick={(e) => handlePage(e, -1)}>previous</button>
-				page {page}
-				<button onClick={(e) => handlePage(e, 1)}>next</button>
+				<span>
+					<button
+						onClick={(e) => handlePage(e, -1)}
+						disabled={page <= 1 || perPage === "all" ? true : false}
+					>
+						&lt;
+					</button>
+					page {page} of{" "}
+					{perPage === "all" ? 1 : Math.ceil(totalCount / perPage)}
+					<button
+						onClick={(e) => handlePage(e, 1)}
+						disabled={
+							page >= Math.ceil(totalCount / perPage) ||
+							perPage === "all"
+								? true
+								: false
+						}
+					>
+						&gt;
+					</button>
+				</span>
 			</fieldset>
 		</form>
 	);

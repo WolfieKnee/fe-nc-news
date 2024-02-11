@@ -1,7 +1,6 @@
 .sortForm {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
 	width: 60%;
 	min-width: 300px;
 	margin-inline: auto;
@@ -11,37 +10,25 @@
 }
 
 .sortForm fieldset {
-	display: flex;
 	border: none;
 	margin: 5px;
+	display: flex;
 }
 
 .sortForm label {
-	display: inline-flex;
-	align-items: center;
+	padding-inline: 5px;
 }
 
-.sortForm select,
-button,
-input {
+.sortForm select {
 	background: var(--platinum);
 	border: 1px solid var(--night);
 	border-radius: 5px;
-	height: 2em;
+	height: 90%;
 	font: inherit;
-	padding-inline: 10px;
-	margin-inline: 5px;
+	padding: 2px;
 }
 
 .sortForm input {
+	height: 90%;
 	aspect-ratio: 1;
-}
-
-.sortForm button:active {
-	background: var(--viridian);
-}
-
-.sortForm,
-button:disabled {
-	border: none;
 }

@@ -20,9 +20,6 @@
 }
 
 .comment__form textarea {
-	margin-block: 5px;
-	border-radius: 5px;
-	padding: 5px;
 	width: 90%;
 }
 

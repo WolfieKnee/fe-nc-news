@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import newsAPIGet from "../utils/utils";
 import ArticleCard from "../components/ArticleCard";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import SortArticles from "../components/SortArticles";
 import PageError from "../components/PageError";
 import styles from "../css/ArticleList.module.css";
@@ -12,8 +12,12 @@ export default function ArticleList() {
 	const [errorState, setErrorState] = useState(null);
 
 	const { topicSlug } = useParams();
+	const [searchParams, setSearchParams] = useSearchParams();
 	const [sortBy, setSortBy] = useState("created_at");
 	const [sortOrder, setSortOrder] = useState("desc");
+	const [perPage, setPerPage] = useState(5);
+	const [page, setPage] = useState(1);
+	const [totalCount, setTotalCount] = useState();
 
 	useEffect(() => {
 		const url = "/articles";
@@ -40,8 +44,7 @@ export default function ArticleList() {
 				setIsLoading(false);
 				setErrorState(err.response);
 			});
-	}, [topicSlug, sortBy, sortOrder, perPage, page, totalCount, searchParams]);
-
+	}, [topicSlug, sortBy, sortOrder, perPage, page, searchParams]);
 
 	if (isLoading) {
 		return <p>loading....</p>;
@@ -88,6 +91,11 @@ export default function ArticleList() {
 				setSortBy={setSortBy}
 				sortOrder={sortOrder}
 				setSortOrder={setSortOrder}
+				perPage={perPage}
+				setPerPage={setPerPage}
+				page={page}
+				setPage={setPage}
+				totalCount={totalCount}
 			/>
 			<ul className={styles.articleList}>
 				{articlesList.map((article) => {

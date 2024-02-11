@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import newsAPIGet from "../utils/utils";
 import ArticleCard from "../components/ArticleCard";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import SortArticles from "../components/SortArticles";
 import PageError from "../components/PageError";
 import styles from "../css/ArticleList.module.css";
@@ -12,9 +12,10 @@ export default function ArticleList() {
 	const [errorState, setErrorState] = useState(null);
 
 	const { topicSlug } = useParams();
+	const [searchParams, setSearchParams] = useSearchParams();
 	const [sortBy, setSortBy] = useState("created_at");
 	const [sortOrder, setSortOrder] = useState("desc");
-	const [perPage, setPerPage] = useState("all");
+	const [perPage, setPerPage] = useState(5);
 	const [page, setPage] = useState(1);
 	const [totalCount, setTotalCount] = useState("1");
 
@@ -34,6 +35,8 @@ export default function ArticleList() {
 			apiQuery.append("limit", perPage);
 			apiQuery.append("p", page);
 		}
+		setSearchParams(apiQuery);
+
 		setIsLoading(true);
 		setErrorState(false);
 		newsAPIGet(apiUrl, apiQuery)

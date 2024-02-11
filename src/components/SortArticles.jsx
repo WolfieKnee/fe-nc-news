@@ -16,26 +16,16 @@ export default function ({
 	const handleSortBy = (e) => {
 		e.preventDefault();
 		setSortBy(e.target.value);
-		const newParams = new URLSearchParams(searchParams);
-		newParams.set("sort_by", e.target.value);
-		setSearchParams(newParams);
 	};
 
 	const handleSortOrder = (e) => {
 		e.preventDefault();
 		setSortOrder(e.target.value);
-		const newParams = new URLSearchParams(searchParams);
-		newParams.set("sort", e.target.value);
-		setSearchParams(newParams);
 	};
 
 	const handlePerPage = (e) => {
 		e.preventDefault();
 		setPerPage(e.target.value);
-		const newParams = new URLSearchParams(searchParams);
-		newParams.set("limit", e.target.value);
-		newParams.append("p", page);
-		setSearchParams(newParams);
 	};
 
 	const handlePage = (e, direction) => {

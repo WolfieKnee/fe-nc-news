@@ -13,12 +13,8 @@
 	background: var(--platinum);
 }
 
-.navigation li:active {
+.navigation :active {
 	background: var(--viridian);
-}
-
-.navigation is-active {
-	background: red;
 }
 
 .navigation a,

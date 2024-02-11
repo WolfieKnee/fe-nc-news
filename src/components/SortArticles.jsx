@@ -1,34 +1,23 @@
+import { useSearchParams } from "react-router-dom";
 import styles from "../css/SortArticles.module.css";
 
-export default function ({
-	sortBy,
-	setSortBy,
-	sortOrder,
-	setSortOrder,
-	perPage,
-	setPerPage,
-	page,
-	setPage,
-	totalCount,
-}) {
+export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
+	const [searchParams, setSearchParams] = useSearchParams();
+
 	const handleSortBy = (e) => {
 		e.preventDefault();
 		setSortBy(e.target.value);
+		const newParams = new URLSearchParams(searchParams);
+		newParams.set("sort_by", e.target.value);
+		setSearchParams(newParams);
 	};
 
 	const handleSortOrder = (e) => {
 		e.preventDefault();
 		setSortOrder(e.target.value);
-	};
-
-	const handlePerPage = (e) => {
-		e.preventDefault();
-		setPerPage(e.target.value);
-	};
-
-	const handlePage = (e, direction) => {
-		e.preventDefault();
-		setPage(Number(page) + Number(direction));
+		const newParams = new URLSearchParams(searchParams);
+		newParams.set("sort", e.target.value);
+		setSearchParams(newParams);
 	};
 
 	return (

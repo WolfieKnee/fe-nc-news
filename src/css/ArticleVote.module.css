@@ -6,7 +6,7 @@
 .votes button {
 	height: 25px;
 	aspect-ratio: 1;
-	border: 1px solid var(--night);
+	border: 1px solid var(--platinum);
 	border-radius: 5px;
 	margin-inline: 5px;
 }

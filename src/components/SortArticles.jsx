@@ -31,9 +31,6 @@ export default function ({
 	const handlePage = (e, direction) => {
 		e.preventDefault();
 		setPage(Number(page) + Number(direction));
-		const newParams = new URLSearchParams(searchParams);
-		newParams.set("p", page + Number(direction));
-		setSearchParams(newParams);
 	};
 
 	return (

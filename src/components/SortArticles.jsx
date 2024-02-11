@@ -1,23 +1,34 @@
-import { useSearchParams } from "react-router-dom";
 import styles from "../css/SortArticles.module.css";
 
-export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
-	const [searchParams, setSearchParams] = useSearchParams();
-
+export default function ({
+	sortBy,
+	setSortBy,
+	sortOrder,
+	setSortOrder,
+	perPage,
+	setPerPage,
+	page,
+	setPage,
+	totalCount,
+}) {
 	const handleSortBy = (e) => {
 		e.preventDefault();
 		setSortBy(e.target.value);
-		const newParams = new URLSearchParams(searchParams);
-		newParams.set("sort_by", e.target.value);
-		setSearchParams(newParams);
 	};
 
 	const handleSortOrder = (e) => {
 		e.preventDefault();
 		setSortOrder(e.target.value);
-		const newParams = new URLSearchParams(searchParams);
-		newParams.set("sort", e.target.value);
-		setSearchParams(newParams);
+	};
+
+	const handlePerPage = (e) => {
+		e.preventDefault();
+		setPerPage(e.target.value);
+	};
+
+	const handlePage = (e, direction) => {
+		e.preventDefault();
+		setPage(Number(page) + Number(direction));
 	};
 
 	return (
@@ -58,6 +69,44 @@ export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
 					checked={sortOrder === "desc"}
 					onChange={handleSortOrder}
 				/>
+			</fieldset>
+			<fieldset
+				className={styles.pagination}
+				name="pagination"
+				title="pagination"
+			>
+				<label htmlFor="perPage">articles per page: </label>
+				<select
+					name="perPage"
+					id="perPage"
+					value={perPage}
+					onChange={handlePerPage}
+				>
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="all">all</option>
+				</select>
+				<span>
+					<button
+						onClick={(e) => handlePage(e, -1)}
+						disabled={page <= 1 || perPage === "all" ? true : false}
+					>
+						&lt;
+					</button>
+					page {page} of{" "}
+					{perPage === "all" ? 1 : Math.ceil(totalCount / perPage)}
+					<button
+						onClick={(e) => handlePage(e, 1)}
+						disabled={
+							page >= Math.ceil(totalCount / perPage) ||
+							perPage === "all"
+								? true
+								: false
+						}
+					>
+						&gt;
+					</button>
+				</span>
 			</fieldset>
 		</form>
 	);

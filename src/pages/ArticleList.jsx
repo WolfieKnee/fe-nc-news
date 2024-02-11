@@ -40,8 +40,7 @@ export default function ArticleList() {
 				setIsLoading(false);
 				setErrorState(err.response);
 			});
-	}, [topicSlug, sortBy, sortOrder, perPage, page, totalCount, searchParams]);
-
+	}, [topicSlug, sortBy, sortOrder]);
 
 	if (isLoading) {
 		return <p>loading....</p>;
@@ -73,16 +72,14 @@ export default function ArticleList() {
 			title={
 				!topicSlug
 					? "article list"
-					: `${totalCount} articles about ${topicSlug}`
+					: `${articlesList.length} articles about ${topicSlug}`
 			}
 		>
 			{topicSlug ? (
 				<h2>
-					{totalCount} articles on {topicSlug}
+					{articlesList.length} articles on {topicSlug}
 				</h2>
-			) : (
-				<h2>{totalCount} articles </h2>
-			)}
+			) : null}
 			<SortArticles
 				sortBy={sortBy}
 				setSortBy={setSortBy}

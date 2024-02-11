@@ -31,6 +31,7 @@ export default function ({ sortBy, setSortBy, sortOrder, setSortOrder }) {
 					onChange={handleSortBy}
 				>
 					<option value="author">author</option>
+					<option value="comment_count">comments</option>
 					<option value="created_at">date</option>
 					<option value="title">title</option>
 					<option value="topic">topic</option>

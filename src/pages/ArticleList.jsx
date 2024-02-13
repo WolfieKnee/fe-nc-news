@@ -44,7 +44,7 @@ export default function ArticleList() {
 				setIsLoading(false);
 				setErrorState(err.response);
 			});
-	}, [topicSlug, sortBy, sortOrder, perPage, page, searchParams]);
+	}, [topicSlug, sortBy, sortOrder, perPage, page, searchParams, topicSlug]);
 
 	if (isLoading) {
 		return <p>loading....</p>;

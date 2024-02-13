@@ -73,15 +73,11 @@ export default function ArticleList() {
 	return (
 		<section
 			name="article list"
-			title={
-				!topicSlug
-					? "article list"
-					: `${articlesList.length} articles about ${topicSlug}`
-			}
+			title={!topicSlug ? "article list" : `articles about ${topicSlug}`}
 		>
 			{topicSlug ? (
 				<h2>
-					{articlesList.length} articles on {topicSlug}
+					{totalCount} articles on {topicSlug}
 				</h2>
 			) : null}
 			<SortArticles
